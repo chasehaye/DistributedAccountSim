@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package bank;
+
+// Service for Customer <-> Branch communication
+service BankService {
+  rpc Query(QueryRequest) returns (QueryResponse);
+  rpc Deposit(DepositRequest) returns (OperationResponse);
+  rpc Withdraw(WithdrawRequest) returns (OperationResponse);
+}
+
+// Service for Branch <-> Branch propagation
+service BranchService {
+  rpc Propagate_Deposit(Propagate_DepositRequest) returns (OperationResponse);
+  rpc Propagate_Withdraw(Propagate_WithdrawRequest) returns (OperationResponse);
+  rpc Shutdown(ShutdownRequest) returns (ShutdownResponse);
+}
+
+// Branch shutdown
+message ShutdownRequest {}  
+message ShutdownResponse {
+  string result = 1;
+}
+
+// Customer query
+message QueryRequest {
+  int32 customer_id = 1;
+  repeated int32 writeset = 2;
+}
+message QueryResponse {
+  int32 balance = 1;
+}
+
+// Customer deposits & withdrawl
+message DepositRequest {
+  int32 customer_id = 1;
+  int32 amount = 2;
+  int32 event_id = 3;
+}
+message WithdrawRequest {
+  int32 customer_id = 1;
+  int32 amount = 2;
+  int32 event_id = 3;
+}
+
+// Propagation (Branch <-> Branch)
+message Propagate_DepositRequest {
+  int32 amount = 1;
+  int32 write_id = 2;
+}
+message Propagate_WithdrawRequest {
+  int32 amount = 1;
+  int32 write_id = 2;
+}
+
+// Response for deposit/withdraw/prop operations
+message OperationResponse {
+  string result = 1;
+  int32 write_id = 2;
+}

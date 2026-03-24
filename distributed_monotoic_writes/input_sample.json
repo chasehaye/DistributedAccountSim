@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "type": "customer",
+    "events": [
+      {"id": 1, "interface": "deposit", "money": 10, "branch": 1},
+      {"id": 2, "interface": "deposit", "money": 20, "branch": 2},
+      {"id": 3, "interface": "deposit", "money": 30, "branch": 3},
+      {"id": 4, "interface": "query", "branch": 1},
+      {"id": 5, "interface": "query", "branch": 2},
+      {"id": 6, "interface": "query", "branch": 3},
+      
+      {"id": 7, "interface": "withdraw", "money": 5, "branch": 2},
+      {"id": 8, "interface": "withdraw", "money": 10, "branch": 3},
+      {"id": 9, "interface": "withdraw", "money": 15, "branch": 1},
+      {"id": 10, "interface": "query", "branch": 1},
+      {"id": 11, "interface": "query", "branch": 2},
+      {"id": 12, "interface": "query", "branch": 3},
+      
+      {"id": 13, "interface": "deposit", "money": 25, "branch": 1},
+      {"id": 14, "interface": "deposit", "money": 35, "branch": 2},
+      {"id": 15, "interface": "query", "branch": 3},
+      {"id": 16, "interface": "query", "branch": 1},
+      {"id": 17, "interface": "query", "branch": 2}
+    ]
+  },
+  {
+    "id": 1,
+    "type": "branch",
+    "balance": 0
+  },
+  {
+    "id": 2,
+    "type": "branch",
+    "balance": 0
+  },
+  {
+    "id": 3,
+    "type": "branch",
+    "balance": 0
+  }
+]
